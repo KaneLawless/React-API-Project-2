@@ -1,0 +1,28 @@
+Root:
+Components:
+<StatsBar /> remains static
+<CoinsList/> within <Outlet />
+<Search /> within <Outlet />
+<SingleCoin /> within <Outlet />
+
+- Can make API call from  the Root to  generate stats for StatsBar, pass state to other Components
+
+Stats Bar:
+Generated in Root by accessing the data returned from the api. Persistant
+
+CoinsList:
+<Header /> h1 and Search box
+Column Headers (sortable?)
+Populate fields by mapping through the data - Row and columns (bootstrap)
+Page refreshes at regular intervals
+Clicking a coin generates page 2 (SingleCoin) using routing
+
+SingleCoin:
+Single coin api call using uuid retrieved from initial api call
+Destructure data and containerise the page carefully to enable easy flexible display
+Back button returning to home
+
+Search: 
+Third api call based on the search term
+Returns a list of coins icon-name-ticker that contains the search term
+When a coin is clicked, route to SingleCoin component, making a call for that uuid
