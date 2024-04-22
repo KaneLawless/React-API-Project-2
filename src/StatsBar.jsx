@@ -2,7 +2,7 @@ export default function StatsBar({ stats }) {
     let { total, totalExchanges, totalMarketCap, total24hVolume } = stats
 
     return (
-        <header className="d-flex justify-content-evenly">
+        <header className="d-flex justify-content-evenly mb-4">
             <h4>Coins: {Number(total).toLocaleString()}</h4>
             <h4>Exchanges: {totalExchanges}</h4>
             <h4>Market Cap: ${Number(totalMarketCap).toLocaleString()}</h4>
