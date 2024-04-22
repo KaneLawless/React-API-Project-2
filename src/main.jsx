@@ -6,6 +6,7 @@ import { registerLicense } from '@syncfusion/ej2-base'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import CoinList from './CoinList.jsx';
 import SingleCoin from './SingleCoin.jsx';
+import Search from './Search.jsx';
 
 registerLicense('Ngo9BigBOggjHTQxAR8/V1NBaF5cXmZCekx0THxbf1x0ZF1MYF9bRHBPMyBoS35RckVnW31eeHRWRmZcWUVy')
 
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
             {
                 path: '/coin/:uuid',
                 element: <SingleCoin />
+            },
+            {
+                path: '/search/:query',
+                element: <Search />
             }
         ]
     }

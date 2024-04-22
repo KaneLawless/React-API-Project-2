@@ -1,8 +1,8 @@
 import { Container, Row, Col } from "react-bootstrap"
-import { useOutletContext, useNavigate, useParams, Link } from "react-router-dom"
+import { useOutletContext, useNavigate } from "react-router-dom"
 
 export default function CoinList() {
-
+    
 
     const { coins } = useOutletContext()
 
@@ -12,10 +12,20 @@ export default function CoinList() {
         navigate(`/coin/${e.target.parentElement.id}`)
     }
 
+    function handleSearch(e) {
+        e.preventDefault()
+        console.log(e.target.lastChild.value)
+        navigate(`/search/${e.target.lastChild.value}`)
+    }
 
     return (
         <>
-            <h1 className="text-center">Top 50 Coins</h1>
+            <header className="d-flex justify-content-between px-4 pb-4">
+                <h1 className="mx-4">Top 50 Coins</h1>
+                <form type="submit" onSubmit={handleSearch} >
+                    <input type="search" name="search" id="search" placeholder="Search any coin..." />
+                </form>
+            </header>
             {coins ?
                 <Container fluid className="mx-4">
                     <Row>

@@ -6,6 +6,7 @@ import { useParams, Link } from "react-router-dom"
 
 export default function SingleCoin() {
 
+    const options = { headers: { 'x-access-token': import.meta.env.VITE_API_KEY } }
     const [coin, setCoin] = useState()
     const [error, setError] = useState()
     const [sparkline, setSparkline] = useState()
@@ -16,7 +17,7 @@ export default function SingleCoin() {
     useEffect(() => {
         async function getData() {
             try {
-                const { data } = await axios.get(`https://api.coinranking.com/v2/coin/${params.uuid}`)
+                const { data } = await axios.get(`https://api.coinranking.com/v2/coin/${params.uuid}`, options)
                 console.log(data.data.coin)
                 setCoin(data.data.coin)
                 const spark = data.data.coin.sparkline
@@ -39,11 +40,11 @@ export default function SingleCoin() {
     return (
         <>
             {coin ?
-                <Container className="d-flex">
-                    <Row>
-                        <Col className="col-9">
-                            <section>
-                                <Card className="d-flex flex-row">
+                <Container className="">
+                    <Row className="">
+                        <Col className="col-8">
+                            <section >
+                                <Card className="d-flex flex-row ">
                                     <Card.Img variant="top" src={coin.iconUrl} className="w-25" />
                                     <Card.Body>
                                         <Card.Title>{coin.name}</Card.Title>
@@ -66,7 +67,7 @@ export default function SingleCoin() {
                                 </div>
                             </section>
                         </Col>
-                        <Col className="col-3">
+                        <Col className="col-4">
                             <section className="mx-4">
                                 <h2>Current Supply Data</h2>
                                 <p>Total Supply: {Number(coin.supply.total).toLocaleString()} {coin.symbol}</p>
