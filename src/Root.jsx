@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import StatsBar from './StatsBar'
+import CoinList from './CoinList'
 
 function Root() {
 
@@ -30,7 +31,8 @@ function Root() {
     return (
         <>
             {stats ? <StatsBar stats={stats} /> : ""}
-
+            <h1 className="text-center">Top 50 Coins</h1>
+            {coins ? <CoinList coins={coins} /> : ""}
         </>
     )
 }
