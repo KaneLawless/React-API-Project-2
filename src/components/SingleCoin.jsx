@@ -3,7 +3,8 @@ import { useState, useEffect } from "react"
 import { Container, Card, Button, Col, Row } from "react-bootstrap"
 import { SparklineComponent, Inject, SparklineTooltip } from "@syncfusion/ej2-react-charts"
 import { useParams, useNavigate } from "react-router-dom"
-import buttonimg from "./images/button-back.png"
+import buttonimg from "../images/button-back.png"
+import SearchInput from "./SearchInput"
 
 export default function SingleCoin() {
 
@@ -14,7 +15,6 @@ export default function SingleCoin() {
     const navigate = useNavigate()
 
     const params = useParams()
-    console.log(params)
 
     function goBack() {
         navigate(-1)
@@ -24,13 +24,11 @@ export default function SingleCoin() {
         async function getData() {
             try {
                 const { data } = await axios.get(`https://api.coinranking.com/v2/coin/${params.uuid}`, options)
-                console.log(data.data.coin)
                 setCoin(data.data.coin)
                 const spark = data.data.coin.sparkline
                 const d = spark.map((price, index) => {
-                    return { "x": index, "xval": new Date().getHours() + index, "yval": price }
+                    return { "x": index, "xval": index, "yval": price }
                 })
-                console.log(d)
                 d[d.length - 1].yval = data.data.coin.price
                 setSparkline(d)
             } catch (error) {
@@ -46,8 +44,9 @@ export default function SingleCoin() {
     return (
         <>
             {coin ?
-                <Container className="">
-                    <Row className="">
+                <Container >
+                    <Row>
+
                         <Col className="col-8">
                             <section >
                                 <Card className="d-flex flex-row p-2">
@@ -69,7 +68,7 @@ export default function SingleCoin() {
                                         <Inject services={[SparklineTooltip]}
                                         />
                                     </SparklineComponent>
-                                    <br /><br /><p>Hourly price chart</p>
+                                    <br /><br /><p>Hourly price chart (24h)</p>
                                 </div>
                             </section>
                         </Col>
@@ -84,10 +83,12 @@ export default function SingleCoin() {
                                 <p>24h Volume: ${Number(coin["24hVolume"]).toLocaleString()}</p>
                                 <p>Price all time high: ${Number(coin.allTimeHigh.price) <= 0.1 ? coin.allTimeHigh.price : Number(coin.allTimeHigh.price).toLocaleString()}</p>
                                 <Button className="back-button " onClick={goBack}><img src={buttonimg} /> Back</Button>
+                                <hr />
+                                <SearchInput />
                             </section>
                         </Col>
                     </Row>
-                </Container > : ""
+                </Container > : error && <p className="text-danger text-center">{error}</p>
             }
         </>
     )
