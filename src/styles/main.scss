@@ -1,0 +1,75 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin-top: 4px;
+    background-color: black;
+}
+
+h1 {
+    font-family: Georgia, 'Times New Roman', Times, sans-serif;
+    font-weight: bold;
+    color: orange;
+    background-color: black
+}
+
+.search-btn {
+    border-color: orange;
+    color: orange;
+    font-weight: bold;
+
+    &:hover {
+        background-color: orange;
+        color: black;
+    }
+}
+
+header {
+    background-color: black;
+    color: orange;
+}
+
+.logo {
+    width: 10%;
+
+}
+
+.cr-logo {
+    width: 11%;
+    cursor: pointer;
+}
+
+div.col {
+    padding: 0px;
+
+}
+
+.list-group-item {
+    background-color: black;
+    color: orange;
+
+
+    &:hover {
+        background-color: orange;
+        color: black;
+    }
+}
+
+.top-50 {
+    background-color: black;
+    color: orange;
+}
+
+.supply-data-div {
+    color: orange
+}
+
+.sparkline {
+    background-color: white;
+    border-radius: 5px;
+}
+
+form {
+    padding-right: 10px
+}

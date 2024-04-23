@@ -7,6 +7,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import CoinList from './CoinList.jsx';
 import SingleCoin from './SingleCoin.jsx';
 import Search from './Search.jsx';
+import "./styles/main.scss";
 
 registerLicense('Ngo9BigBOggjHTQxAR8/V1NBaF5cXmZCekx0THxbf1x0ZF1MYF9bRHBPMyBoS35RckVnW31eeHRWRmZcWUVy')
 

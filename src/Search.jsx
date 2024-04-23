@@ -1,6 +1,7 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
+import { ListGroup } from "react-bootstrap"
 
 export default function Search() {
 
@@ -8,7 +9,7 @@ export default function Search() {
 
     const navigate = useNavigate()
     const [searchData, setSearchData] = useState()
-    const options = {headers : {'x-access-token': import.meta.env.VITE_API_KEY }}
+    const options = { headers: { 'x-access-token': import.meta.env.VITE_API_KEY } }
 
     function handleClick(e) {
         navigate(`/coin/${e.target.id}`)
@@ -31,11 +32,13 @@ export default function Search() {
 
     return (
         <>
-            {searchData ? searchData.map(coin => {
-                return <p key={coin.uuid} style={{ cursor: "pointer" }} id={coin.uuid} onClick={handleClick}>{coin.name}</p>
-            }) :
-                ""
-            }
+            <ListGroup>
+                {searchData ? searchData.map(coin => {
+                    return <ListGroup.Item action variant="success" key={coin.uuid} style={{ cursor: "pointer" }} id={coin.uuid} onClick={handleClick}>{coin.name}</ListGroup.Item>
+                }) :
+                    ""
+                }
+            </ListGroup>
         </>
     )
 }
