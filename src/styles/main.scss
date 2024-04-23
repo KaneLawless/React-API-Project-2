@@ -5,7 +5,7 @@
 body {
     margin-top: 4px;
     background-color: black;
-    
+
 }
 
 
@@ -22,6 +22,7 @@ h5 {
 
     @media (max-width: 1535px) {
         border: 0px;
+
     }
 }
 
@@ -46,7 +47,12 @@ h5 {
 header {
     background-color: black;
     color: orange;
-    margin-top: 10px
+    margin-top: 10px;
+
+    @media (max-width: 800px) {
+        display: flex;
+        flex-direction: column;
+    }
 }
 
 .logo {
@@ -78,6 +84,15 @@ div.col {
 .top-50 {
     background-color: black;
     color: orange;
+
+    @media (max-width: 800px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+       
+    }
+
 }
 
 .supply-data-div {
@@ -85,7 +100,11 @@ div.col {
 }
 
 form {
-    padding-right: 10px
+    padding-right: 10px;
+
+    @media (max-width:600px) {
+        width: 300px;
+    }
 }
 
 .sparkline {

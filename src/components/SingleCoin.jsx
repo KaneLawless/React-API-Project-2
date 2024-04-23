@@ -1,25 +1,31 @@
 import axios from "axios"
+
+import { useParams, useNavigate } from "react-router-dom"
 import { useState, useEffect } from "react"
 import { Container, Card, Button, Col, Row } from "react-bootstrap"
+
 import { SparklineComponent, Inject, SparklineTooltip } from "@syncfusion/ej2-react-charts"
-import { useParams, useNavigate } from "react-router-dom"
+
 import buttonimg from "../images/button-back.png"
 import SearchInput from "./SearchInput"
 
 export default function SingleCoin() {
 
     const options = { headers: { 'x-access-token': import.meta.env.VITE_API_KEY } }
+
     const [coin, setCoin] = useState()
     const [error, setError] = useState()
     const [sparkline, setSparkline] = useState()
-    const navigate = useNavigate()
 
+    const navigate = useNavigate()
     const params = useParams()
+
 
     function goBack() {
         navigate(-1)
     }
 
+    // Query single coin data and generate sparkline data
     useEffect(() => {
         async function getData() {
             try {
@@ -46,8 +52,8 @@ export default function SingleCoin() {
             {coin ?
                 <Container >
                     <Row>
-
                         <Col className="col-8">
+                            {/* Left section - Info card and sparkline */}
                             <section >
                                 <Card className="d-flex flex-row p-2">
                                     <Card.Img variant="top" src={coin.iconUrl} className="w-25" />
@@ -72,6 +78,7 @@ export default function SingleCoin() {
                                 </div>
                             </section>
                         </Col>
+                        {/*Right section - supply data */}
                         <Col className="col-4">
                             <section className="mx-4 supply-data-div">
                                 <h2>Current Supply Data</h2>

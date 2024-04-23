@@ -19,8 +19,10 @@ function Root() {
 
     // Retrieve top 50 coins data
     useEffect(() => {
+
         async function getData() {
             try {
+                console.log("calling api")
                 const res = await axios.get('https://api.coinranking.com/v2/coins', options)
                 setCoins(res.data.data.coins)
                 setStats(res.data.data.stats)
@@ -29,15 +31,16 @@ function Root() {
             }
         }
         getData()
-
-
+        setInterval(() => {
+            getData()
+        }, 30000)
     }, [])
 
     return (
-        <>  
+        <>
             {/* Generate stats bar after data is retrieved and Load active route*/}
             {stats ? <StatsBar stats={stats} /> :
-              error ? <p variant="danger">{error}</p> : <div className='text-center my-5'> <Loading /></div>}
+                error ? <p variant="danger">{error}</p> : <div className='text-center my-5'> <Loading /></div>}
             <Outlet context={{ coins }} />
             <Footer />
 
