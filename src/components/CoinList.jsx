@@ -1,9 +1,9 @@
 import { useOutletContext, useNavigate } from "react-router-dom"
 import { ListGroup, Container, Row, Col } from "react-bootstrap"
 import SearchInput from "./SearchInput"
+import { useEffect, useState } from "react"
 
 export default function CoinList() {
-
     // Pass props from Root
     const { coins } = useOutletContext()
     const navigate = useNavigate()
@@ -16,7 +16,7 @@ export default function CoinList() {
     return (
         <>
             {/*Header and search component */}
-            <div className="d-flex justify-content-evenly pb-4 top-50 ">
+            <div className="d-flex justify-content-evenly align-items-center pb-4 top-50 ">
                 <h1 className="mx-4">Today's Top 50 Cryptocurrencies by Market Cap </h1>
                 <SearchInput />
             </div>
@@ -43,9 +43,9 @@ export default function CoinList() {
                                     <Row id={uuid} style={{ cursor: "pointer" }}>
                                         <Col className="col-1" onClick={loadSingleCoin}>{index + 1}</Col>
                                         <Col onClick={loadSingleCoin}><img src={iconUrl} className="img-fluid logo" alt="logo" /> {name}</Col>
-                                        <Col onClick={loadSingleCoin} className="text-right">{price < 0.1 ? price : Number(price).toLocaleString()}</Col>
+                                        <Col onClick={loadSingleCoin} className="text-right" >{price < 0.1 ? price : Number(price).toLocaleString()}</Col>
                                         <Col onClick={loadSingleCoin} >{Number(marketCap).toLocaleString()}</Col>
-                                        <Col className="col-1" onClick={loadSingleCoin}>{change}</Col>
+                                        <Col onClick={loadSingleCoin} className={change >= 0 ? "col-1 text-success" : "col-1 text-danger"}>{change}</Col>
                                         <Col onClick={loadSingleCoin}>{Number(volume).toLocaleString()}</Col>
                                     </Row>
                                 </ListGroup.Item>

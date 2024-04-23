@@ -22,7 +22,7 @@ export default function SingleCoin() {
 
 
     function goBack() {
-        navigate(-1)
+        navigate(-1) || navigate('/')
     }
 
     // Query single coin data and generate sparkline data
@@ -68,7 +68,7 @@ export default function SingleCoin() {
                                 </Card>
                                 <div className="container my-4 text-center sparkline" >
                                     <SparklineComponent
-                                        id='sparkline' height='200px' width='70%' dataSource={sparkline} xName='xval' yName='yval'
+                                        id='sparkline' height='200px' width='90%' dataSource={sparkline} xName='xval' yName='yval'
                                         markerSettings={{ visible: ['All'] }}
                                         tooltipSettings={{ visible: true, format: '${yval}', }}>
                                         <Inject services={[SparklineTooltip]}

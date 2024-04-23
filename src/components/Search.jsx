@@ -23,7 +23,7 @@ export default function Search() {
     }
     // Go back to previous page
     function goBack() {
-        navigate(-1)
+        navigate(-1) || navigate('/')
     }
 
     // Query search data based on search terms
@@ -59,7 +59,7 @@ export default function Search() {
                             id={coin.uuid} onClick={handleClick}>{coin.name}
                         </ListGroup.Item>
                     }) :
-                        ""
+                        error && <p>{error}</p>
                     }
                     <Button className="back-button" onClick={goBack}><img src={buttonimg} /> Back</Button>
 

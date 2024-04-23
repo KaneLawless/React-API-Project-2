@@ -35,7 +35,7 @@ function Root() {
             getData()
         }, 30000)
     }, [])
-
+    
     return (
         <>
             {/* Generate stats bar after data is retrieved and Load active route*/}
