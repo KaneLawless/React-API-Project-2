@@ -2,7 +2,8 @@ import axios from "axios"
 import { useState, useEffect } from "react"
 import { Container, Card, Button, Col, Row } from "react-bootstrap"
 import { SparklineComponent, Inject, SparklineTooltip } from "@syncfusion/ej2-react-charts"
-import { useParams, Link } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
+import buttonimg from "./images/button-back.png"
 
 export default function SingleCoin() {
 
@@ -10,9 +11,14 @@ export default function SingleCoin() {
     const [coin, setCoin] = useState()
     const [error, setError] = useState()
     const [sparkline, setSparkline] = useState()
+    const navigate = useNavigate()
 
     const params = useParams()
     console.log(params)
+
+    function goBack() {
+        navigate(-1)
+    }
 
     useEffect(() => {
         async function getData() {
@@ -61,9 +67,9 @@ export default function SingleCoin() {
                                         markerSettings={{ visible: ['All'] }}
                                         tooltipSettings={{ visible: true, format: '${yval}', }}>
                                         <Inject services={[SparklineTooltip]}
-                                            />
+                                        />
                                     </SparklineComponent>
-                                    <br /><br /><br /><p>Hourly price chart</p>
+                                    <br /><br /><p>Hourly price chart</p>
                                 </div>
                             </section>
                         </Col>
@@ -76,8 +82,8 @@ export default function SingleCoin() {
                                 <p>Current Market Cap: ${Number(coin.marketCap).toLocaleString()}</p>
                                 <p>Fully Diluted Market Cap: ${Number(coin.fullyDilutedMarketCap).toLocaleString()}</p>
                                 <p>24h Volume: ${Number(coin["24hVolume"]).toLocaleString()}</p>
-                                <p>Price all time high: ${Number(coin.allTimeHigh.price).toLocaleString()}</p>
-                                <Link variant="warning" to='/'>Back to Home</Link>
+                                <p>Price all time high: ${Number(coin.allTimeHigh.price) <= 0.1 ? coin.allTimeHigh.price : Number(coin.allTimeHigh.price).toLocaleString()}</p>
+                                <Button className="back-button " onClick={goBack}><img src={buttonimg} /> Back</Button>
                             </section>
                         </Col>
                     </Row>

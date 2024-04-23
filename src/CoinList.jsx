@@ -54,7 +54,7 @@ export default function CoinList() {
                             const volume = coin["24hVolume"]
 
                             return (
-                                <ListGroup.Item action><Row key={uuid} id={uuid} style={{ cursor: "pointer" }}>
+                                <ListGroup.Item ><Row key={uuid} id={uuid} style={{ cursor: "pointer" }}>
                                     <Col className="col-1" onClick={loadSingleCoin}>{index + 1}</Col>
                                     <Col onClick={loadSingleCoin}><img src={iconUrl} className="img-fluid logo" alt="logo" /> {name}</Col>
                                     <Col onClick={loadSingleCoin} className="text-right">{price < 0.1 ? price : Number(price).toLocaleString()}</Col>

@@ -14,7 +14,15 @@ h1 {
     background-color: black
 }
 
+.btn {
+    background-color: orange;
+    border-color: orange;
+
+    &:hover {}
+}
+
 .search-btn {
+    background-color: transparent;
     border-color: orange;
     color: orange;
     font-weight: bold;
@@ -28,6 +36,7 @@ h1 {
 header {
     background-color: black;
     color: orange;
+    margin-top: 10px
 }
 
 .logo {
@@ -42,10 +51,10 @@ header {
 
 div.col {
     padding: 0px;
-
 }
 
 .list-group-item {
+    cursor: pointer;
     background-color: black;
     color: orange;
 
@@ -65,11 +74,37 @@ div.col {
     color: orange
 }
 
+form {
+    padding-right: 10px
+}
+
 .sparkline {
     background-color: white;
     border-radius: 5px;
+    padding-top: 10px;
 }
 
-form {
-    padding-right: 10px
+.search-list {
+    width: 30%;
+    margin: 0 auto;
+}
+
+.back-button {
+    background-color: orange;
+    color: black;
+
+    &:hover {
+        background-color: lighten(orange, 5%);
+        border-color: orange;
+
+        img {
+            filter: invert(1);
+            transition: filter 0.2s;
+        }
+
+    }
+
+    img {
+        width: 5%;
+    }
 }
