@@ -1,7 +1,6 @@
 import { useOutletContext, useNavigate } from "react-router-dom"
 import { ListGroup, Container, Row, Col } from "react-bootstrap"
 import SearchInput from "./SearchInput"
-import { useEffect, useState } from "react"
 
 export default function CoinList() {
     // Pass props from Root
@@ -30,7 +29,7 @@ export default function CoinList() {
                             <Col >Price $</Col>
                             <Col >Market Cap $</Col>
                             <Col className="col-1">24hr %</Col>
-                            <Col>Volume $</Col>
+                            <Col> 24h Volume $</Col>
                         </Row>
                         </ListGroup.Item>
                         {/*Generate and format column data, on Click navigate to individual coin page*/}
